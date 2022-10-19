@@ -1,0 +1,9 @@
+export ZOPEN_GIT_URL="https://github.com/LuaDist/libgdbm.git"
+export ZOPEN_GIT_DEPS="git make"
+export ZOPEN_TYPE="GIT"
+export ZOPEN_CHECK="skip" # no tests
+
+zopen_check_results()
+{
+  return 3;
+}
