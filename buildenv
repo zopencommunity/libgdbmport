@@ -1,5 +1,5 @@
 export ZOPEN_GIT_URL="https://github.com/LuaDist/libgdbm.git"
-export ZOPEN_GIT_DEPS="git make libtool"
+export ZOPEN_GIT_DEPS="git make coreutils"
 export ZOPEN_TYPE="GIT"
 export ZOPEN_CHECK="skip" # no tests
 
