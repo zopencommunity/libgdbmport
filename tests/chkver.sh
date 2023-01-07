@@ -8,11 +8,12 @@ INC=$LIBGDBM_HOME
 #LIB=$LIBGDBM_HOME/lib
 #INC=$LIBGDBM_HOME/include
 CC=xlclang
+CFLAGS='-qascii'
 
 cd "${mydir}"
 rm -f chkver chkver.o
 
-if ! ${CC} -I$INC -L$LIB -ochkver chkver.c -lgdbm ; then
+if ! ${CC} ${CFLAGS} -I$INC -L$LIB -ochkver chkver.c -lgdbm ; then
   echo "Unable to build basic version test for libgdbm" >&2
   exit 8
 fi
