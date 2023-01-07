@@ -1,9 +1,33 @@
 export ZOPEN_GIT_URL="https://github.com/LuaDist/libgdbm.git"
 export ZOPEN_GIT_DEPS="git make libtool coreutils"
 export ZOPEN_TYPE="GIT"
-export ZOPEN_CHECK="skip" # no tests
+export ZOPEN_CHECK="../tests/chkver.sh" 
+
+
+zopen_append_to_env()
+{
+cat <<ZZ
+if [ ! -z "\$ZOPEN_IN_ZOPEN_BUILD" ]; then
+  export ZOPEN_EXTRA_CFLAGS="\${ZOPEN_EXTRA_CFLAGS} -I\$PWD/include"
+  export ZOPEN_EXTRA_CXXFLAGS="\${ZOPEN_EXTRA_CXXFLAGS} -I\$PWD/include"
+  export ZOPEN_EXTRA_LDFLAGS="\${ZOPEN_EXTRA_LDFLAGS} -L\$PWD/lib"
+  export ZOPEN_EXTRA_LIBS="\${ZOPEN_EXTRA_LIBS} -lgdbm"
+fi
+ZZ
+}
 
 zopen_check_results()
 {
-  return 3;
+chk="$1/$2_check.log"
+
+successes=$(grep -E "ok$" ${chk} | wc -l)
+failures=$(grep -E "Failed$" ${chk} | wc -l)
+totalTests="$((successes+failures))"
+
+cat <<ZZ
+  actualFailures:$failures
+  totalTests:$totalTests
+  expectedFailures:1
+ZZ
+
 }
