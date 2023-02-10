@@ -3,7 +3,6 @@ export ZOPEN_GIT_DEPS="git make libtool coreutils zoslib"
 export ZOPEN_TYPE="GIT"
 export ZOPEN_CHECK="../tests/chkver.sh" 
 
-
 zopen_append_to_env()
 {
 cat <<ZZ
