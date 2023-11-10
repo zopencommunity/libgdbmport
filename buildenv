@@ -30,3 +30,8 @@ cat <<ZZ
 ZZ
 
 }
+
+zopen_get_version()
+{
+  grep "PACKAGE_VERSION" configure | head -1 | awk -F"=" '{print $2}' | awk '{gsub(/[^0-9.]/ , ""); print}'
+}
