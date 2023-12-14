@@ -1,6 +1,9 @@
-export ZOPEN_GIT_URL="https://github.com/LuaDist/libgdbm.git"
-export ZOPEN_GIT_DEPS="git make libtool coreutils zoslib"
-export ZOPEN_TYPE="GIT"
+# bump: libgdbm-version /LIBGDBM_VERSION="(.*)"/ https://ftp.gnu.org/gnu/gdbm/|re:/gdbm-([\d.]+).tar.gz/$1/|semver:*
+LIBGDBM_VERSION="1.23"
+
+export ZOPEN_STABLE_URL="https://ftp.gnu.org/gnu/gdbm/gdbm-${LIBGDBM_VERSION}.tar.gz"
+export ZOPEN_STABLE_DEPS="git make libtool coreutils zoslib"
+export ZOPEN_BUILD_LINE="STABLE"
 export ZOPEN_CHECK="../tests/chkver.sh" 
 
 zopen_append_to_env()
@@ -28,7 +31,6 @@ cat <<ZZ
   totalTests:$totalTests
   expectedFailures:1
 ZZ
-
 }
 
 zopen_get_version()
