@@ -1,4 +1,6 @@
 install
+gdbm-*/
 libgdbm
 log
+log.*/
 

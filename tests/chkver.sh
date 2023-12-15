@@ -1,19 +1,15 @@
 #!/bin/sh
 
 mydir=$(cd $(dirname $0) && echo $PWD)
-LIBGDBM_HOME=${mydir}/../libgdbm 
+LIBGDBM_HOME=${mydir}/../gdbm-*/src
 LIB=$LIBGDBM_HOME/.libs
 INC=$LIBGDBM_HOME
-#LIBGDBM_HOME=$HOME/zopen/prod/libgdbm
-#LIB=$LIBGDBM_HOME/lib
-#INC=$LIBGDBM_HOME/include
-CC=xlclang
-CFLAGS='-qascii'
 
 cd "${mydir}"
 rm -f chkver chkver.o
 
-if ! ${CC} ${CFLAGS} -I$INC -L$LIB -ochkver chkver.c -lgdbm ; then
+set -x
+if ! ${CC} ${CFLAGS} ${CPPFLAGS} -I $INC -L $LIB -ochkver chkver.c $LDFLAGS -lgdbm $LIBS ; then
   echo "Unable to build basic version test for libgdbm" >&2
   exit 8
 fi
