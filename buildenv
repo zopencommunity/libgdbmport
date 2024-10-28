@@ -2,6 +2,7 @@
 LIBGDBM_VERSION="1.23"
 
 export ZOPEN_STABLE_URL="https://ftp.gnu.org/gnu/gdbm/gdbm-${LIBGDBM_VERSION}.tar.gz"
+export ZOPEN_CATEGORIES="library"
 export ZOPEN_STABLE_DEPS="git make libtool coreutils zoslib"
 export ZOPEN_BUILD_LINE="STABLE"
 export ZOPEN_COMP=CLANG
