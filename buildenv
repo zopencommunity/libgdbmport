@@ -1,5 +1,5 @@
 # bump: libgdbm-version /LIBGDBM_VERSION="(.*)"/ https://ftp.gnu.org/gnu/gdbm/|re:/gdbm-([\d.]+).tar.gz/$1/|semver:*
-LIBGDBM_VERSION="1.23"
+LIBGDBM_VERSION="1.24"
 
 export ZOPEN_STABLE_URL="https://ftp.gnu.org/gnu/gdbm/gdbm-${LIBGDBM_VERSION}.tar.gz"
 export ZOPEN_CATEGORIES="library"
